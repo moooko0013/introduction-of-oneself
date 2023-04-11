@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid magenta; */
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    width: 100%;
+}
+
+/* ヘッダー */
+
+.header-text,
+.footer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    color: #eee;
+    text-shadow: 0 0 15px #666;
+}
+
+#header,
+#footer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#header:before,
+#footer:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: url("./img/sakura.jpg") no-repeat center;
+    background-size: cover;
+    z-index: -1;
+}
+
+#header:before {
+    top: 0;
+    left: 0;
+}
+
+#footer:before {
+    bottom: 0;
+    left: 0;
+}
+
+
+/* スクロールを促すアニメーション */
+
+.scrolldown {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    height: 50px;
+}
+
+.scrolldown span {
+    position: absolute;
+    left: -30px;
+    top: -25px;
+    color: #eee;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+}
+
+.scrolldown::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background: #eee;
+    animation: pathmove 2s ease-in-out infinite;
+}
+
+@keyframes pathmove {
+    0% {
+        height: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    30% {
+        height: 30px;
+        opacity: 1;
+    }
+
+    100% {
+        height: 0;
+        top: 50px;
+        opacity: 0;
+    }
+}
+
+main {
+    color: #eee;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: #00223E;
+    padding: 30vw 0 30vh 0;
+    text-align: center;
+}
+
+@media screen and (min-width: 641px) {
+
+    main {
+        font-size: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    /* 640px以下*/
+    main {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+.spacer {
+    width: 100%;
+    height: 50vh;
+}
+
+.spacer-harf {
+    width: 100%;
+    height: 25vh;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+}
+
+.right {
+    align-items: flex-end;
+    margin: 0 10vw;
+}
+
+.left {
+    align-items: flex-start;
+    margin: 0 10vw;
+}
+
+.content p {
+    margin-top: 2vw;
+}
+
+.content .list {
+    text-align: left;
+    margin-left: 2vw;
+}
+
+.headline {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.headline .rect {
+    position: absolute;
+    display: block;
+    background: linear-gradient(90deg, #e66465, #9198e5);
+    width: 100%;
+    height: 100%;
+}
+
+.question-area {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__wrapper {
+    max-width: 90%;
+    width: 700px;
+    height: 260px;
+    perspective: 1200px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s;
+    transform-style: preserve-3d;
+    cursor: default;
+}
+
+.card__text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 260px;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card__text--front {
+    background: linear-gradient(90deg, #e66465, #9198e5);
+}
+
+.card__text--back {
+    background: linear-gradient(90deg, #9198e5, #e66465);
+    transform: rotateY(180deg);
+}
+
+.mickey__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.mickey__wrap-left,
+.mickey__wrap-right {
+    width: 50%;
+    height: fit-content;
+    display: flex;
+}
+
+.mickey__wrap-right {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mickey__wrap-left {
+    justify-content: flex-end;
+}
+
+.mickey__wrap-right .img-box {
+    padding: 10vh 0;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.mickey__wrap-right .img-box:first-child {
+    padding-top: 0;
+}
+
+.mickey__wrap-right .img-box:last-child {
+    padding-bottom: 0;
+}
+
+.mickey__wrap-right .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(150%);
+    filter: drop-shadow(3px 3px 5px #000);
+}
+
+.mickey__text {
+    position: absolute;
+    color: transparent;
+    text-align: left;
+}
+
+/* ハート */
+
+.heart__wrapper {
+    margin-bottom: 20vh;
+}
+
+.heart {
+    width: 24px;
+    height: 24px;
+    clip-path: path("M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z");
+    transform: scale(5);
+    margin-right: 10%;
+}
+
+.pink-color {
+    background: linear-gradient(180deg, #D384AE 0%, #d31179 30%);
+}
+
+/* ながれる */
+
+.loop__wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+.loop__item {
+    padding-right: 50px;
+    width: calc(100vw / 2);
+    max-width: 20vh;
+}
+
+.loop__item>img {
+    width: 100%;
+}
+
+@keyframes infinity-scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.loop-list {
+    height: 20vh;
+    display: flex;
+    animation: infinity-scroll-left 95s infinite linear 0.5s both;
+}
+
+.footer-text {
+    display: none;
+}
+
+/* スクロールバー */
+
+body::-webkit-scrollbar {
+    width: 10px;
+    /* height: 10px; */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #444;
+}
